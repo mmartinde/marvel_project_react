@@ -9,7 +9,7 @@ async function login (req, res){
         if (!foundUser) {
             return res.status(400).json({msg:"Invalid credentials"});
         }
-        else{cd ..
+        else{
             const resultCompare = await bcrypt.compare(req.body.password, foundUser.password);
             if(!resultCompare){
                 return res.status(400).json({msg:"Invalid credentials"});    // wrong password
