@@ -1,15 +1,19 @@
 const express = require ("express");
 const mongoose = require ("mongoose");
 
-const userRoutes = require("./routes/user.routes");
+require('dotenv').config();
+const CONNECTIONSTRING = process.env.CONNECTIONSTRING;
 
-const app = express ();
-app.use(express.json());
+// Create an instance of the Express application
+
+const userRoutes = require("./routes/user.routes");
+const comicRoutes = require ("./routes/comic.routes") ;
+
+const app = express (); // creates a simple Express application and assigns it to a constant variable named app.const productRoutes = require ("./routes
+app.use(express.json());  //we enable the option of passing data through post in json format
 
 // Connect to MongoDB database using Mongoose
-
-
-mongoose.connect("mongodb+srv://manuma:sZIJnRZAz8s4fwJg@cluster0.hspjmtk.mongodb.net/marvel")
+mongoose.connect(CONNECTIONSTRING)
 .then(()=>{
     console.log(`Right conection with BBDD`)
 })
@@ -18,6 +22,8 @@ mongoose.connect("mongodb+srv://manuma:sZIJnRZAz8s4fwJg@cluster0.hspjmtk.mongodb
 })
 
 app.use("/api/users", userRoutes);  //It is indicated to which route the user requests are to be directed.
-app.listen(3000, () => { 
+app.use("/api/comics", comicRoutes); //It is indicated to which route the comics requests are to be directed.
+
+app.listen(process.env.PORT, () => { 
     console.log (`API working...on port 3000!`)
 })

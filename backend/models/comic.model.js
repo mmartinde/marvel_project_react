@@ -6,20 +6,20 @@ const comicSchema = new mongoose.Schema({
     required: true,
   },
   number: {
-    type: Number,
+    type: String,
     required: true,
   },
   published: {
-    type: Date,
+    type: String,
     required: true,
   },
   synopsis: {
     type: String,
-    required: true,
+    required: false,
   },
   series: {
     type: String,
-    required: true,
+    required: false,
   },
   writer: {
     type: String,
@@ -27,7 +27,7 @@ const comicSchema = new mongoose.Schema({
   },
   penciler: {
     type: String,
-    required: true,
+    required: false,
   },
   cover: {
     type: String,
