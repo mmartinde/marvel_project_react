@@ -1,13 +1,17 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import axios from 'axios'
+import { SessionContext } from "../../contexts/SessionContext";
 export default function LoginForm(){
     
     const [datos, setDatos] = useState({email:"",password:""});
+    const {login} = useContext (SessionContext)
 
-    function login(){
+
+    function doLogin(){
         axios.post ("http://localhost:3000/api/users/login",datos)
         .then((response)=>{
             console.log(response.data)
+            login({email: datos.email, token:response.data.token});
         })
         .catch((err)=>{
             console.log(err)
@@ -31,7 +35,7 @@ export default function LoginForm(){
                 <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
             </div>
-            <button onClick={login} type="submit" class="btn btn-primary">Submit</button>
+            <button onClick={doLogin} type="submit" class="btn btn-primary">Submit</button>
         </div>
     </div>   
     )
