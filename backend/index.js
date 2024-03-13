@@ -1,5 +1,6 @@
 const express = require ("express");
 const mongoose = require ("mongoose");
+const cors = require ("cors");
 
 require('dotenv').config();
 const CONNECTIONSTRING = process.env.CONNECTIONSTRING;
@@ -10,6 +11,9 @@ const userRoutes = require("./routes/user.routes");
 const comicRoutes = require ("./routes/comic.routes") ;
 
 const app = express (); // creates a simple Express application and assigns it to a constant variable named app.const productRoutes = require ("./routes
+
+app.use(cors()); // Allow cross-origin requests from any origin for testing purposes only
+
 app.use(express.json());  //we enable the option of passing data through post in json format
 
 // Connect to MongoDB database using Mongoose
