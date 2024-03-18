@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { Link, Navigate, Route, Routes } from "react-router-dom";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
@@ -6,6 +6,7 @@ import Comics from "./pages/comics/Comics";
 import Home from "./pages/home/Home";
 import { useContext } from "react";
 import { SessionContext } from "./contexts/SessionContext";
+import "./App.scss";
 
 function App() {
   const { logout, user } = useContext(SessionContext);
@@ -56,6 +57,7 @@ function App() {
           <Route path="/signup" element={<Signup></Signup>}></Route>
           <Route path="/comics" element={<Comics></Comics>}></Route>
         </Routes>
+        
       </main>
     </>
   );

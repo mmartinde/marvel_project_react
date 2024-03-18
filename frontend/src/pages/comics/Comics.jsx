@@ -1,7 +1,10 @@
-export default function Comics(){
+import CarouselComics from "../../components/carouselComics/CarouselComics";
+
+export default function Comics (){
     return(
         <>
-            <h2>Star Trek Collections</h2>
+           <CarouselComics/>
         </>
     )
 }
+
