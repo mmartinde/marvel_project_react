@@ -38,8 +38,7 @@ export default function SignupForm(){
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
                 <InputValidation 
-                    rules={[{msg:'lenght less than 8!', fn:(p)=>p.length>=8},
-                        {msg:'without @ simbol', fn:(p)=>p.includes("@")}]} 
+                    rules={[{msg:'lenght less than 8!', fn:(p)=>p.length>=8}]} 
                         type="password" value={datos.password} 
                         onChange={(e)=>setDatos({...datos, password:e.target.value})}>
                 </InputValidation>

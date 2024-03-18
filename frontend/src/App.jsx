@@ -4,6 +4,7 @@ import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import Comics from "./pages/comics/Comics";
 import Home from "./pages/home/Home";
+import AdminComics from "./pages/adminComics/adminComics";
 import { useContext } from "react";
 import { SessionContext } from "./contexts/SessionContext";
 import "./App.scss";
@@ -38,6 +39,11 @@ function App() {
             </li>
             ):("")}
             
+            {user && user.role === 'admin'?(
+              <li>
+                <Link className="btn btn-primary text-white no-underline" to="/admin-comics">Admin Comics</Link>
+              </li>):("")}
+
             {user ? (
               <Button type="button" class="btn btn-outline-secondary" onClick={logout}>logout</Button>
             ):("")}
@@ -56,6 +62,7 @@ function App() {
           ></Route>
           <Route path="/signup" element={<Signup></Signup>}></Route>
           <Route path="/comics" element={<Comics></Comics>}></Route>
+          <Route path="/admin-comics" element={<AdminComics></AdminComics>}></Route>
         </Routes>
         
       </main>

@@ -16,8 +16,8 @@ async function login (req, res){
                 return res.status(400).json({msg:"Invalid credentials"});    // wrong password
             }
             else{
-            const token = jwt.sign ({userId:foundUser._id}, secretKey,{expiresIn:'1h'}); 
-            return res.status(200).json({msg:"ok", token: token});  // correct username and password
+            const token = jwt.sign ({userId:foundUser._id}, secretKey,{expiresIn:'2h'}); 
+            return res.status(200).json({msg:"ok", token: token, role: foundUser.role});  // correct username and password
             }
         }
     } catch (error) {
@@ -38,7 +38,17 @@ async function signup (req, res){
     }
 };
 
+async function deleteUser(id){
+    try{
+        const userDeleted = await User.findByIdAndDelete(id)
+        return userDeleted
+    } catch(error){
+        console.log(error)
+    }
+  }
+
 module.exports={
     login,
     signup,
+    deleteUser,
 };

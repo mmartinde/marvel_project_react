@@ -1,8 +1,7 @@
-import { useContext, useEffect, useState } from "react"
-import Item from "../comicCard/comicCard"
+import { useEffect, useState } from "react"
 import axios from "axios"
 import { useCookies } from "react-cookie"
-import { Container, Row } from "react-bootstrap"
+import { CardTitle, Container, Row } from "react-bootstrap"
 import ComicCard from "../comicCard/comicCard"
 
 
@@ -28,7 +27,7 @@ export default function CarouselComics(){
 
     return(
         <>
-            <h2>Lists of comics</h2>
+            <CardTitle as="h1" className="mb-2" >Lists of comics</CardTitle>
             <Container fluid className="py-3">
                 <Row>
                     {comics.map((comic)=>(
