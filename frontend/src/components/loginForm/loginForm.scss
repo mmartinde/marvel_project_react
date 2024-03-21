@@ -1,0 +1,32 @@
+.myForm {
+    .form-label {
+      font-weight: bold;
+    }
+    
+    .form-control {
+      border-radius: 0.25rem;
+      border-color: #007bff;
+      
+      &:focus {
+        box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+      }
+    }
+    
+    #emailHelp {
+      font-size: 0.8rem;
+    }
+    
+    .form-check-input {
+      accent-color: #007bff;
+    }
+    
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+      
+      &:hover {
+        background-color: #0069d9;
+        border-color: #0062cc;
+      }
+    }
+  }

@@ -2,6 +2,7 @@ import { useContext } from "react"
 import axios from 'axios'
 import { SessionContext } from "../../contexts/SessionContext"
 import { useForm } from "react-hook-form"
+import './loginForm.scss'
 export default function LoginForm(){
     const {
         register,
@@ -15,7 +16,6 @@ export default function LoginForm(){
     function doLogin(datos){
         axios.post ("http://localhost:3000/api/users/login",datos)
         .then((response)=>{
-            console.log(response.data.role)
             login({email: datos.email, token:response.data.token, role:response.data.role})
             datos=""
         })

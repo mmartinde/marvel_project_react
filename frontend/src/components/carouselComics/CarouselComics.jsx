@@ -3,6 +3,7 @@ import axios from "axios"
 import { useCookies } from "react-cookie"
 import { CardTitle, Container, Row } from "react-bootstrap"
 import ComicCard from "../comicCard/comicCard"
+import "./carouselComics.scss"
 
 
 export default function CarouselComics(){
