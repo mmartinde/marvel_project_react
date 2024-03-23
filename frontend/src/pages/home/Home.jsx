@@ -1,11 +1,3 @@
-/* export default function Home (){
-    return(
-        <>
-            <h2>Wellcome!</h2>
-        </>
-    )
-} */
-
 import React from 'react';
 import './home.css';
 
