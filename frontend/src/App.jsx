@@ -21,33 +21,54 @@ function App() {
               <Link to="/">Home</Link>
             </li>
 
-            {user ? ("") : (
+            {user ? (
+              ""
+            ) : (
               <li>
                 <Link to="/login">Login</Link>
               </li>
             )}
 
-            {user ? ("") : (
-              <li>
-              <Link to="/signup">Signup</Link>
-            </li> 
-            )}
-            
             {user ? (
+              ""
+            ) : (
               <li>
-              <Link to="/comics">Comic</Link>
-            </li>
-            ):("")}
-            
-            {user && user.role === 'admin'?(
-              <li>
-                <Link className="btn btn-primary text-white no-underline" to="/admin-comics">Admin Comics</Link>
-              </li>):("")}
+                <Link to="/signup">Signup</Link>
+              </li>
+            )}
 
             {user ? (
-              <Button type="button" class="btn btn-outline-secondary" onClick={logout}>logout</Button>
-            ):("")}
-            
+              <li>
+                <Link to="/comics">Comic</Link>
+              </li>
+            ) : (
+              ""
+            )}
+
+            {user && user.role === "admin" ? (
+              <li>
+                <Link
+                  className="btn btn-primary text-white no-underline"
+                  to="/admin-comics"
+                >
+                  Admin Comics
+                </Link>
+              </li>
+            ) : (
+              ""
+            )}
+
+            {user ? (
+              <Button
+                type="button"
+                class="btn btn-outline-secondary"
+                onClick={logout}
+              >
+                logout
+              </Button>
+            ) : (
+              ""
+            )}
           </ul>
         </nav>
       </header>
@@ -62,10 +83,17 @@ function App() {
           ></Route>
           <Route path="/signup" element={<Signup></Signup>}></Route>
           <Route path="/comics" element={<Comics></Comics>}></Route>
-          <Route path="/admin-comics" element={<AdminComics></AdminComics>}></Route>
+          <Route
+            path="/admin-comics"
+            element={<AdminComics></AdminComics>}
+          ></Route>
         </Routes>
-        
       </main>
+      <footer>
+        <div class="container">
+          <span class="text-muted">&copy; 2024 - BootCamp Proyecto React</span>
+        </div>
+      </footer>
     </>
   );
 }
