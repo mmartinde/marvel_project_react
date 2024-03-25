@@ -89,8 +89,8 @@ function App() {
           ></Route>
         </Routes>
       </main>
-      <footer>
-        <div class="container">
+      <footer >
+        <div class="footer fixed-bottom bg-light">
           <span class="text-muted">&copy; 2024 - BootCamp Proyecto React</span>
         </div>
       </footer>
