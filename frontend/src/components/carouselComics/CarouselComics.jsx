@@ -27,14 +27,11 @@ export default function CarouselComics() {
 
   return (
     <>
-      <CardTitle as="h1" className="mb-2">
-        Marvel World Comics
+      <CardTitle as="h1" className="mb-2 p-3">
+        Marvel World comics
       </CardTitle>
-      <CardSubtitle>
-        Serie: {console.log (comics.values.series)} 
-      </CardSubtitle>
 
-      <Container fluid className="py-3">
+      <Container fluid="flex" className="p-3  w-75 mx-auto">
         <Row>
           {comics.map((comic) => (
             <ComicCard key={comic.id} comic={comic} />

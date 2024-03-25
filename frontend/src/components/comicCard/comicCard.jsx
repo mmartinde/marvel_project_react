@@ -4,7 +4,7 @@ import { Card } from "react-bootstrap";
 export default function ComicCard({comic}) {
 
   return (
-    <Card style={{width: '18rem'}} className="h-100">
+    <Card style={{width: '18rem'}} className="pt-1 h-100 mx-auto">
       <Card.Img variant="top" src={comic.cover}/>
       <Card.Body>
         <Card.Title>{comic.title}</Card.Title>
