@@ -2,6 +2,8 @@ import { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import InputValidation from "../shared/inputValidation"
+import Swal from "sweetalert2"
+
 export default function SignupForm(){
    const[datos, setDatos]=useState({email:"", password:"", name:""})
    const navegate = useNavigate()
@@ -9,7 +11,8 @@ export default function SignupForm(){
     function onSignup (){
         axios.post("http://localhost:3000/api/users/signup", datos)
         .then((reponse)=>{
-            alert("Succefull register")
+            Swal.fire("Succefull register")
+           // alert("Succefull register")
             navegate( "/login")
         })
         .catch((err)=>{
