@@ -2,27 +2,32 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { SessionContext } from "../../contexts/SessionContext";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Swal from "sweetalert2";
+
 export default function DeleteComis() {
   const { user } = useContext(SessionContext);
   const [id, setId] = useState("");
-  const [comicDeleted, setComicDeleted] = useState([
-    "No comics have been deleted so far",
-  ]);
+  const [comicDeleted, setComicDeleted] = useState([""]);
 
   function deleteComic(id) {
-    let routeDeleteComicById = `http://localhost:3000/api/comics/${id}?token=${user.token}`;
+    const DeleteComicById = `http://localhost:3000/api/comics/${id}?token=${user.token}`;
     axios
-      .delete(routeDeleteComicById)
+      .delete(DeleteComicById)
       .then((response) => {
-        setComicDeleted((prevComics) => [...prevComics, "Process completed!"]);
-        window.alert("The comic was deleted");
+        setComicDeleted((prevComics) => [...prevComics]);
+        Swal.fire({title:"Process completed!",
+        text: "The comic has been deleted.",
+        icon: "sucess"});
+        setId("");
       })
       .catch((error) => {
         console.error("Error deleting comic:", error);
-        setComicDeleted((prevComics) => [
-          ...prevComics,
-          "Failed to delete comic",
-        ]);
+        setComicDeleted((prevComics) => [...prevComics]);
+        Swal.fire({title:"Error",
+        text: "Failed to delete comic",
+        icon: "error"});
       });
   }
 
@@ -33,16 +38,16 @@ export default function DeleteComis() {
   }, [comicDeleted]);
 
   return (
-    <div>
-      <h2>Delete Comic</h2>
-      <input
+    <Form className="container p-3">
+      <Form.Label className="h3">Delete Comic</Form.Label>
+      <Form.Control
         type="text"
         placeholder="Enter ID of the comic to be deleted"
         value={id}
         onChange={(e) => setId(e.target.value)}
       />
-      <button onClick={() => deleteComic(id)}>Delete Comic</button>
+      <Button className="p-2 mt-2" onClick={() => deleteComic(id)}>Delete Comic</Button>
       <p>{comicDeleted[comicDeleted.length - 1]}</p>
-    </div>
+    </Form>
   );
 }

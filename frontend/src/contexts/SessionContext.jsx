@@ -1,10 +1,10 @@
-import { createContext, useEffect, useState } from "react";
-import {useCookies} from "react-cookie"
+import {createContext, useEffect, useState} from "react";
+import {useCookies} from "react-cookie";
 
 
 export const SessionContext = createContext();
 
-export function SessinProvider({children}) {
+export function SessionProvider({children}) {
 
     const [user, setUser] = useState(null)
     const [cookies, setCookie, removeCookie] = useCookies(['user'])

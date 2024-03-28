@@ -1,6 +1,6 @@
-
+import Form from 'react-bootstrap/Form';
 import CreateComics from "../createComic/CreateComics";
-import DeleteComis from "../deleteComic/DeleteComics"
+import DeleteComis from "../deleteComic/DeleteComics";
 
 
 
@@ -10,14 +10,14 @@ export default function ActionsAdminFilms(){
 
     return (
       <>
-        <div className="formsComics">
-          <div className="formComics_Delete">
+        <Form>
+          <Form.Group className="p-2">
             <DeleteComis></DeleteComis>
-          </div>
-          <div className="formComics_Create">
+          </Form.Group>
+          <Form.Group className="p-2">
             <CreateComics></CreateComics>
-          </div>
-        </div>
+          </Form.Group>
+        </Form>
       </>
     );
 }

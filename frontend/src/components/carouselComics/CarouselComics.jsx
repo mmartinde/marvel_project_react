@@ -9,7 +9,7 @@ export default function CarouselComics() {
   const [cookies] = useCookies();
   const userToken = cookies.user;
   const ruteToken = `http://localhost:3000/api/comics?token=${userToken.token}`;
-  console.log(ruteToken);
+
 
   const [comics, setComics] = useState([]);
 
@@ -17,7 +17,6 @@ export default function CarouselComics() {
     axios
       .get(ruteToken)
       .then((response) => {
-        console.log(response);
         setComics([...comics, ...response.data]);
       })
       .catch((err) => {
